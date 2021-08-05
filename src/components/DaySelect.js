@@ -8,28 +8,47 @@ class DaySelect extends Component {
   };
 
   changeToDayBefore() {
-    let newDay = this.state.selectedDay;
-    newDay.setDate(newDay.getDate() - 1);
-    this.handleDayChange(newDay);
+    let selectedDay = this.state.selectedDay;
+    let newDateObject = selectedDay.dateObject;
+    newDateObject.setDate(newDateObject.getDate() - 1);
+    let newDay = this._createDatePickerDate(newDateObject);
+    this.setSelectedDay(newDay);
   }
 
   changeToDayAfter() {
-    let newDay = this.state.selectedDay;
-    newDay.setDate(newDay.getDate() + 1);
-    this.handleDayChange(newDay);
-  }
-
-  handleDayChange(day) {
-    this.props.changeSelectedDay(day);
+    let selectedDay = this.state.selectedDay;
+    let newDateObject = selectedDay.dateObject;
+    newDateObject.setDate(newDateObject.getDate() + 1);
+    let newDay = this._createDatePickerDate(newDateObject);
+    this.setSelectedDay(newDay);
   }
 
   _getCurrentDate() {
     let today = new Date();
+    return this._createDatePickerDate(today);
+  }
+
+  setSelectedDay = (day) => {
+    day.dateObject = this._convertToDate(day);
+    this.setState({
+      selectedDay: day,
+    });
+  };
+
+  _convertToDate(datePickerDate) {
+    return new Date(
+      datePickerDate.year,
+      datePickerDate.month,
+      datePickerDate.day
+    );
+  }
+
+  _createDatePickerDate(date) {
     return {
-      year: today.getFullYear(),
-      month: today.getMonth(),
-      day: today.getDate(),
-      dateObject: today,
+      year: date.getFullYear(),
+      month: date.getMonth(),
+      day: date.getDate(),
+      dateObject: date,
     };
   }
 
@@ -47,7 +66,12 @@ class DaySelect extends Component {
     return (
       <div className="flex">
         <div className="flex-1 text-right">
-          <button className="btn btn-ghost" type="button" value="click me">
+          <button
+            onClick={() => this.changeToDayBefore()}
+            className="btn btn-ghost"
+            type="button"
+            value="click me"
+          >
             <svg
               className="w-6 h-6"
               fill="none"
@@ -74,7 +98,12 @@ class DaySelect extends Component {
           />
         </div>
         <div className="flex-1 text-left">
-          <button className="btn btn-ghost" type="button" value="click me">
+          <button
+            onClick={() => this.changeToDayAfter()}
+            className="btn btn-ghost"
+            type="button"
+            value="click me"
+          >
             <svg
               className="w-6 h-6"
               fill="none"
@@ -94,13 +123,6 @@ class DaySelect extends Component {
       </div>
     );
   }
-
-  setSelectedDay = (day) => {
-    day.dateObject = new Date(day.year, day.month, day.day);
-    this.setState({
-      selectedDay: day,
-    });
-  };
 }
 
 export default DaySelect;

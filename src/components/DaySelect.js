@@ -89,13 +89,15 @@ class DaySelect extends Component {
           </button>
         </div>
         <div className="flex-1 text-center">
-          <DatePicker
-            value={this.state.selectedDay}
-            onChange={this.setSelectedDay}
-            formatInputText={this._formatInputValue}
-            inputClassName="input input-ghost w-auto"
-            calendarClassName="responsive-calendar"
-          />
+          <div className="form-control">
+            <DatePicker
+              value={this.state.selectedDay}
+              onChange={this.setSelectedDay}
+              formatInputText={this._formatInputValue}
+              inputClassName="input text-black  input-ghost w-auto"
+              calendarClassName="responsive-calendar"
+            />
+          </div>
         </div>
         <div className="flex-1 text-left">
           <button

@@ -6,7 +6,13 @@ import DaySelect from "./components/DaySelect";
 function App() {
   return (
     <div>
-      <DaySelect />
+      <div className="navbar mb-2 shadow-lg bg-neutral text-neutral-content">
+        <div className="navbar-start"></div>
+        <div className="navbar-center ">
+          <DaySelect />
+        </div>
+        <div className="navbar-end"></div>
+      </div>
 
       {/* <!-- Span bottom edge --> */}
       <div>

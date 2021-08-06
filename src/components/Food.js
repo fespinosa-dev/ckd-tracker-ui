@@ -10,9 +10,9 @@ const Food = ({ image, description, servingSize, proteinQuantity }) => {
           </div>
         </div>
         <div class="flex-1">
-          <h2 class="card-title">{description}</h2>{" "}
+          <h2 class="card-title">{description}</h2>
           <p class="text-base-content text-opacity-40">{servingSize}</p>
-        </div>{" "}
+        </div>
         <div class="flex flex-col">
           <p class="text-base-content">{proteinQuantity}</p>
           <p class="text-base-content">Protein</p>

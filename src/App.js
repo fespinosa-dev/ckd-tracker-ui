@@ -3,17 +3,12 @@ import logo from "./logo.svg";
 import "./App.css";
 import DaySelect from "./components/DaySelect";
 import Food from "./components/Food";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div>
-      <div className="navbar mb-2 shadow-lg bg-neutral text-neutral-content">
-        <div className="navbar-start"></div>
-        <div className="navbar-center ">
-          <DaySelect />
-        </div>
-        <div className="navbar-end"></div>
-      </div>
+      <Header />
 
       {/* <!-- Span bottom edge --> */}
       <div>
